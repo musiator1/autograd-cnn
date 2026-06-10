@@ -163,8 +163,7 @@ function adjoint!(::GraphWeight) end
 # Forward pass, forward automatic differentiation, backward automatic differentiation
 function forward!(order::Tuple, pairs...)
     for pair in pairs
-        tensor, data = pair
-        tensor.data .= data
+        pair[1].data .= pair[2]
     end
     foreach(primal!, order) 
 end
